@@ -69,9 +69,18 @@ namespace MathLib.Shape
             mesh.SetVertices(new List<Vector3>(this.verticies));
             mesh.SetTriangles(triangles, 0);
 
+            //calculte Normals
             mesh.RecalculateNormals();
             for (int i = 0; i < triangles.Length; i++)
                 mesh.normals[i] = Vector3.up;
+
+            //calculate UV's
+            Vector2[] uvs = new Vector2[verticies.Length];
+            for (int i = 0; i < uvs.Length; i++)
+            {
+                uvs[i] = new Vector2(verticies[i].x, verticies[i].z);
+            }
+            mesh.uv = uvs;
 
             return mesh;
         }
