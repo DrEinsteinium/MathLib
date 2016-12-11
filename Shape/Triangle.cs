@@ -65,9 +65,10 @@ namespace MathLib.Shape
         {
             Mesh mesh = new Mesh();
             mesh.name = this.GetType().Name;
-            int[] triangles = { 0, 1, 2 };
+            int[] triangles = { 2, 1, 0 };
             mesh.SetVertices(new List<Vector3>(this.verticies));
             mesh.SetTriangles(triangles, 0);
+
             mesh.RecalculateNormals();
             for (int i = 0; i < triangles.Length; i++)
                 mesh.normals[i] = Vector3.up;

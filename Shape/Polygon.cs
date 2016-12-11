@@ -28,11 +28,11 @@ namespace MathLib.Shape
             verticies = new Vector3[numSides];
             int inc = Mathf.FloorToInt(360.0f / (float)numSides);
             int count = 0;
-            for (int i = 0; i < 360; i+= inc)
+            for (int i = 360; i > 0; i-= inc)
             {
                 float x = Mathf.Cos(Mathf.Deg2Rad * i) * radius;
                 float y = Mathf.Sin(Mathf.Deg2Rad * i) * radius;
-                this.verticies[count++] = new Vector3(x, y, 0f);
+                this.verticies[count++] = new Vector3(x, 0f, y);
             }
         }
 
