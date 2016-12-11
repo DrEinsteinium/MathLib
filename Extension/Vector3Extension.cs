@@ -4,6 +4,30 @@ namespace MathLib.Extensions
 {
     public static class Vector3Extension
     {
+        /// <summary>
+        /// Multiplies the X component of this vector by -1
+        /// </summary>
+        public static void FlipX(this Vector3 vec)
+        {
+            vec.x = vec.x * -1;
+        }
+
+        /// <summary>
+        /// Multiplies the Y component of this vector by -1
+        /// </summary>
+        public static void FlipY(this Vector3 vec)
+        {
+            vec.y = vec.y * -1;
+        }
+
+        /// <summary>
+        /// Multiplies the Z component of this vector by -1
+        /// </summary>
+        public static void FlipZ(this Vector3 vec)
+        {
+            vec.z = vec.z * -1;
+        }
+
         public static float DistanceTo(this Vector3 v1, Vector3 v2)
         {
             return Mathf.Sqrt(v1.DistanceToSq(v2));
