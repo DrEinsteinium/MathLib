@@ -17,6 +17,8 @@ namespace MathLib.DataStructure
             List<Node> children;
             T data;
 
+            public delegate bool Compare(Node n1, Node n2);
+
             public Node(Node parent, T data)
             {
                 this.parent = parent;
@@ -120,13 +122,25 @@ namespace MathLib.DataStructure
             {
                 if (ret == null)
                     foreach (Node c in n.GetChildren())
-                        if (c.GetData().Equals(data))
+                        if (c != null && c.GetData().Equals(data))
                             ret = c;
             }, true);
             return ret;
         }
 
-
-
+        public Node Find(Node.Compare comparion)
+        {
+            Node ret = null;
+            Traverse(root, delegate (Node n)
+            {
+                if(ret == null)
+                {
+                    foreach (Node c in n.GetChildren())
+                        if (c != null && comparion(n, c))
+                            ret = c;
+                }
+            }, true);
+            return ret;
+        }
     }
 }
